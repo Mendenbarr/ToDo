@@ -29,9 +29,14 @@ public class ListManager extends javax.swing.JFrame {
 
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
-        listMini3 = new GUIComponents.ListMini();
+        listMini1 = new GUIComponents.ListMini();
         listMini4 = new GUIComponents.ListMini();
         listMini2 = new GUIComponents.ListMini();
+        listMini5 = new GUIComponents.ListMini();
+        listMini3 = new GUIComponents.ListMini();
+        listMini6 = new GUIComponents.ListMini();
+        listMini7 = new GUIComponents.ListMini();
+        listMini8 = new GUIComponents.ListMini();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         newList = new javax.swing.JMenuItem();
@@ -43,10 +48,17 @@ public class ListManager extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(new java.awt.GridLayout(15, 0));
-        jPanel1.add(listMini3);
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
+        jPanel1.add(listMini1);
         jPanel1.add(listMini4);
         jPanel1.add(listMini2);
+        jPanel1.add(listMini5);
+        jPanel1.add(listMini3);
+        jPanel1.add(listMini6);
+        jPanel1.add(listMini7);
+        jPanel1.add(listMini8);
 
         jScrollPane2.setViewportView(jPanel1);
 
@@ -77,7 +89,8 @@ public class ListManager extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setBounds(0, 0, 560, 578);
+        setSize(new java.awt.Dimension(592, 721));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -121,9 +134,14 @@ public class ListManager extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JMenuItem listManager;
+    private GUIComponents.ListMini listMini1;
     private GUIComponents.ListMini listMini2;
     private GUIComponents.ListMini listMini3;
     private GUIComponents.ListMini listMini4;
+    private GUIComponents.ListMini listMini5;
+    private GUIComponents.ListMini listMini6;
+    private GUIComponents.ListMini listMini7;
+    private GUIComponents.ListMini listMini8;
     private javax.swing.JMenuItem load;
     private javax.swing.JMenu menuFile;
     private javax.swing.JMenu menuView;

@@ -32,11 +32,14 @@ public class ListMini extends javax.swing.JPanel {
         btnClose = new GUIComponents.JButtonIcon();
         Progress = new javax.swing.JLabel();
 
-        Name.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        setMaximumSize(new java.awt.Dimension(32767, 40));
+
+        Name.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         Name.setText("Name");
 
         btnClose.setFocusPainted(false);
 
+        Progress.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         Progress.setText("1/3 Complete");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -48,15 +51,15 @@ public class ListMini extends javax.swing.JPanel {
                 .addComponent(Name)
                 .addGap(18, 18, 18)
                 .addComponent(Progress)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(Name)
                         .addComponent(Progress)))

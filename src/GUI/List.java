@@ -29,7 +29,9 @@ public class List extends javax.swing.JFrame {
 
         jMenuItem5 = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jPanel1 = new javax.swing.JPanel();
+        task1 = new GUIComponents.Task();
+        task2 = new GUIComponents.Task();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         newList = new javax.swing.JMenuItem();
@@ -46,12 +48,11 @@ public class List extends javax.swing.JFrame {
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setMaximumSize(new java.awt.Dimension(32767, 300));
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
+        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
+        jPanel1.add(task1);
+        jPanel1.add(task2);
+
+        jScrollPane1.setViewportView(jPanel1);
 
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -122,9 +123,9 @@ public class List extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem exit;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem listManager;
     private javax.swing.JMenuItem load;
@@ -132,5 +133,7 @@ public class List extends javax.swing.JFrame {
     private javax.swing.JMenu menuView;
     private javax.swing.JMenuItem newList;
     private javax.swing.JMenuItem save;
+    private GUIComponents.Task task1;
+    private GUIComponents.Task task2;
     // End of variables declaration//GEN-END:variables
 }

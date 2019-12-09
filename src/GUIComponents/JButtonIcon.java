@@ -29,16 +29,17 @@ public class JButtonIcon extends JButton {
     
     
     public void setImage(String image){
+        System.out.println("ImageSet");
         ImageIcon IconBase = new ImageIcon(image);
-        IconBase.setImage(getScaledImage(IconBase, 12, 12));
+        IconBase.setImage(getScaledImage(IconBase, 24, 24));
         this.setIcon(IconBase);
-        ImageIcon closeIconRollover = new ImageIcon(getScaledImage(IconBase, 15, 15));
+        ImageIcon closeIconRollover = new ImageIcon(getScaledImage(IconBase, 30, 30));
         this.setRolloverIcon(closeIconRollover);
-        ImageIcon closeIconSelected = new ImageIcon(getScaledImage(IconBase, 15, 15));
+        ImageIcon closeIconSelected = new ImageIcon(getScaledImage(IconBase, 30, 30));
         this.setSelectedIcon(closeIconSelected);
-        ImageIcon closeIconPressed = new ImageIcon(getScaledImage(IconBase, 15, 15));
+        ImageIcon closeIconPressed = new ImageIcon(getScaledImage(IconBase, 30, 30));
         this.setPressedIcon(closeIconPressed);
-        ImageIcon closeIconDisabled = new ImageIcon(getScaledImage(IconBase, 15, 15));
+        ImageIcon closeIconDisabled = new ImageIcon(getScaledImage(IconBase, 30, 30));
         this.setDisabledIcon(closeIconDisabled);
     }
 

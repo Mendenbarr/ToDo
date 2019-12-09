@@ -32,12 +32,14 @@ public class Task extends javax.swing.JPanel {
 
         name = new javax.swing.JLabel();
         checkBoxDone = new javax.swing.JCheckBox();
-        jLabel1 = new javax.swing.JLabel();
         btnClose = new GUIComponents.JButtonIcon();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
-        name.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        name.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         name.setText("Task 1");
 
+        checkBoxDone.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         checkBoxDone.setText("Done");
         checkBoxDone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -45,9 +47,18 @@ public class Task extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("Desc");
-
         btnClose.setFocusPainted(false);
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("  f       ");
+        jTextArea1.setWrapStyleWord(true);
+        jTextArea1.setBorder(null);
+        jTextArea1.setFocusable(false);
+        jTextArea1.setOpaque(false);
+        jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -56,17 +67,14 @@ public class Task extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(name)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 710, Short.MAX_VALUE)
                         .addComponent(checkBoxDone)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -77,9 +85,9 @@ public class Task extends javax.swing.JPanel {
                         .addComponent(name)
                         .addComponent(checkBoxDone))
                     .addComponent(btnClose, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(169, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -91,7 +99,8 @@ public class Task extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private GUIComponents.JButtonIcon btnClose;
     private javax.swing.JCheckBox checkBoxDone;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel name;
     // End of variables declaration//GEN-END:variables
 
