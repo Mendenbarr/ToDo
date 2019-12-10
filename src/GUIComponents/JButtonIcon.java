@@ -17,6 +17,7 @@ import javax.swing.JButton;
  *
  * @author 01048750
  */
+// Not used for anything in the end, although I'm happy with the code itself. 
 public class JButtonIcon extends JButton {
 
     public JButtonIcon() {
@@ -29,7 +30,6 @@ public class JButtonIcon extends JButton {
     
     
     public void setImage(String image){
-        System.out.println("ImageSet");
         ImageIcon IconBase = new ImageIcon(image);
         IconBase.setImage(getScaledImage(IconBase, 24, 24));
         this.setIcon(IconBase);

@@ -7,7 +7,6 @@ package GUIComponents;
 // Icon taken from https://www.flaticon.com/packs/essential-collection/6
 
 import java.io.Serializable;
-import javax.swing.JCheckBox;
 
 
 

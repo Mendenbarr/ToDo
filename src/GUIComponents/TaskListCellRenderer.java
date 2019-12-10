@@ -23,10 +23,6 @@ public class TaskListCellRenderer extends Task implements ListCellRenderer<Objec
     @Override
     public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
         Task t = (Task)value;
-        
-       
-        //setNameText(value.toString());
-        
 
         Color background;
         Color foreground;

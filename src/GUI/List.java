@@ -198,7 +198,7 @@ public class List extends javax.swing.JFrame {
 
     private void writeListToFile(File file) {
         if (file.exists()) {
-            // check with user via JOptionPane.showConfirmDialog
+            // TODO check with user via JOptionPane.showConfirmDialog
             // before overwriting the file.
             System.out.println("File " + file.getPath() + " exists");
         }
