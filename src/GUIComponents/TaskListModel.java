@@ -5,13 +5,14 @@
  */
 package GUIComponents;
 
+import java.io.Serializable;
 import javax.swing.DefaultListModel;
 
 /**
  *
  * @author Jake
  */
-public class TaskListModel extends DefaultListModel {
+public class TaskListModel extends DefaultListModel implements Serializable {
     
     
 }

@@ -6,28 +6,22 @@
 package GUI;
 
 import GUIComponents.Task;
-import GUIComponents.TaskListCellRenderer;
+import GUIComponents.TaskListControl;
 import GUIComponents.TaskListModel;
-import java.util.ArrayList;
-import java.util.Vector;
-import javax.swing.DefaultListModel;
+import java.io.*;
+import javax.swing.JFileChooser;
 
 /**
  *
  * @author 01048750
  */
 public class List extends javax.swing.JFrame {
-    DefaultListModel taskModel = new DefaultListModel();
-
+    JFileChooser chooser = new JFileChooser();
     /**
      * Creates new form MainGUI
      */
     public List() {
         initComponents();
-        taskList.setCellRenderer(new TaskListCellRenderer());
-        taskList.setModel(taskModel);
-        taskModel.addElement(new Task("Task 1"));
-        taskModel.addElement(new Task("Task 2"));
     }
 
     /**
@@ -40,15 +34,8 @@ public class List extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem5 = new javax.swing.JMenuItem();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        taskList = new javax.swing.JList<>();
-        btnAdd = new javax.swing.JButton();
-        btnToggle = new javax.swing.JButton();
-        btnRemove = new javax.swing.JButton();
-        btnEdit = new javax.swing.JButton();
-        txtInput = new javax.swing.JTextField();
+        jTabbedPane = new javax.swing.JTabbedPane();
+        taskListControl1 = new GUIComponents.TaskListControl();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         newList = new javax.swing.JMenuItem();
@@ -61,92 +48,34 @@ public class List extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("To Do List");
 
-        taskList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(taskList);
+        jTabbedPane.addTab("1", taskListControl1);
 
-        btnAdd.setText("Add Task");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
-            }
-        });
-
-        btnToggle.setText("Toggle Task Complete");
-        btnToggle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnToggleActionPerformed(evt);
-            }
-        });
-
-        btnRemove.setText("Remove Task");
-        btnRemove.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoveActionPerformed(evt);
-            }
-        });
-
-        btnEdit.setText("Edit Task");
-        btnEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditActionPerformed(evt);
-            }
-        });
-
-        txtInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtInputActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 824, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnToggle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAdd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEdit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRemove, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtInput))
-                .addGap(18, 18, 18))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnAdd)
-                .addGap(18, 18, 18)
-                .addComponent(btnToggle)
-                .addGap(18, 18, 18)
-                .addComponent(btnEdit)
-                .addGap(18, 18, 18)
-                .addComponent(btnRemove)
-                .addContainerGap(271, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("tab1", jPanel1);
-
-        getContentPane().add(jTabbedPane1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jTabbedPane, java.awt.BorderLayout.CENTER);
 
         menuFile.setText("File");
 
         newList.setText("New Task List");
+        newList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newListActionPerformed(evt);
+            }
+        });
         menuFile.add(newList);
 
         save.setText("Save List to Data Store");
+        save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveActionPerformed(evt);
+            }
+        });
         menuFile.add(save);
 
         load.setText("Load List From Data Store");
+        load.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadActionPerformed(evt);
+            }
+        });
         menuFile.add(load);
 
         exit.setText("Exit");
@@ -165,29 +94,21 @@ public class List extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        addTask(txtInput.getText());
-    }//GEN-LAST:event_btnAddActionPerformed
-
-    private void txtInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtInputActionPerformed
-
-    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
-        removeTask();
-    }//GEN-LAST:event_btnRemoveActionPerformed
-
-    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        editTask(txtInput.getText());
-    }//GEN-LAST:event_btnEditActionPerformed
-
-    private void btnToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToggleActionPerformed
-        toggleTask();
-    }//GEN-LAST:event_btnToggleActionPerformed
-
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         this.dispose();
     }//GEN-LAST:event_exitActionPerformed
+
+    private void newListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newListActionPerformed
+        jTabbedPane.addTab(Integer.toString(jTabbedPane.getTabCount()+1), null, new TaskListControl());
+    }//GEN-LAST:event_newListActionPerformed
+
+    private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
+        save();
+    }//GEN-LAST:event_saveActionPerformed
+
+    private void loadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadActionPerformed
+        load();
+    }//GEN-LAST:event_loadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,65 +146,91 @@ public class List extends javax.swing.JFrame {
         });
     }
     
-    public void addTask(String name){
-        // Protection from blank names 
-        if (name.isBlank()) return;
-        taskModel.addElement(new Task(name));
-    }
-    
-    public void removeTask(){
-        // If there is nothing in the task list, do nothing
-        if (taskModel.isEmpty()) return;
-        // If nothing is selected, but tasks exist, remove the final task
-        if (taskList.getSelectedIndex() == -1) {
-            taskModel.remove(taskModel.size() - 1);
-            return;
-        }
-        // If there is at least one task selected, removes the selected tasks
-        int[] index = new int [taskList.getMaxSelectionIndex() - taskList.getMinSelectionIndex()];
-        for (int i = -1; i < index.length; i++){
-            taskModel.remove(taskList.getSelectedIndex());
-        }
-    }
-    
-    public void editTask(String name){
-        // If there is nothing in the task list, do nothing
-        if (taskModel.isEmpty()) return;
-        // If nothing is selected, but tasks exist, do nothing
-        if (taskList.getSelectedIndex() == -1) return;
-        // If there is at least one task selected, edit the first selected tasks
-        taskModel.setElementAt(name, taskList.getSelectedIndex());
-        
-    }
-    
-    public void toggleTask(){
-        // If there is nothing in the task list, do nothing
-        if (taskModel.isEmpty()) return;
-        // If nothing is selected, but tasks exist, do nothing
-        if (taskList.getSelectedIndex() == -1) return;
-        // If there is at least one task selected, toggle all selected tasks
-        for (int i = taskList.getMinSelectionIndex(); i <= taskList.getMaxSelectionIndex(); i++){
-            Task t = (Task)taskModel.getElementAt(i);
-            t.checkBox(!t.boxChecked());
+
+    public void save() {
+        int retValue = chooser.showSaveDialog(this);
+        if (retValue == JFileChooser.APPROVE_OPTION) {
+            File f = chooser.getSelectedFile();
+            writeListToFile(f);
         }
     }
 
+    public void load() {
+        int retValue = chooser.showOpenDialog(this);
+        if (retValue == JFileChooser.APPROVE_OPTION) {
+
+            File f = chooser.getSelectedFile();
+            readFileToList(f);
+
+        }
+    }
+    // From https://coderanch.com/t/344337/java/Loading-Saving-Listbox
+    private void readFileToList(File file) {
+        try {
+            jTabbedPane.addTab(Integer.toString(jTabbedPane.getTabCount()+1), null, new TaskListControl());
+            TaskListControl tab = (TaskListControl) jTabbedPane.getComponentAt(jTabbedPane.getTabCount()-1);
+            TaskListModel model = tab.getModel();
+            BufferedReader br = new BufferedReader(
+                    new InputStreamReader(
+                            new FileInputStream(file)));
+            String line;
+            while ((line = br.readLine()) != null) {
+                boolean checked;
+                if (line.contains("true")) {
+                    line = line.replaceFirst("true", "");
+                    checked = true;
+
+                } else {
+                    line = line.replaceFirst("false", "");
+                    checked = false;
+                }
+                model.addElement(new Task(line));
+                Task task = (Task) model.getElementAt(model.size()-1);
+                task.checkBox(checked);
+
+            }
+            jTabbedPane.setSelectedComponent(tab);
+            br.close();
+        } catch (IOException e) {
+            System.out.println("Read error: " + e.getMessage());
+        }
+    }
+
+    private void writeListToFile(File file) {
+        if (file.exists()) {
+            // check with user via JOptionPane.showConfirmDialog
+            // before overwriting the file.
+            System.out.println("File " + file.getPath() + " exists");
+        }
+        TaskListControl tab = (TaskListControl) jTabbedPane.getSelectedComponent();
+        TaskListModel model = tab.getModel();
+
+        try {
+            BufferedWriter bw = new BufferedWriter(
+                    new OutputStreamWriter(
+                            new FileOutputStream(file)));
+            for (int j = 0; j < model.getSize(); j++) {
+                String line = model.getElementAt(j).toString();
+                bw.write(line, 0, line.length());
+                bw.newLine();
+            }
+            bw.close();
+        } catch (IOException e) {
+            System.out.println("Write error: " + e.getMessage());
+        }
+    }
+
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnEdit;
-    private javax.swing.JButton btnRemove;
-    private javax.swing.JButton btnToggle;
     private javax.swing.JMenuItem exit;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane;
     private javax.swing.JMenuItem load;
     private javax.swing.JMenu menuFile;
     private javax.swing.JMenuItem newList;
     private javax.swing.JMenuItem save;
-    private javax.swing.JList<String> taskList;
-    private javax.swing.JTextField txtInput;
+    private GUIComponents.TaskListControl taskListControl1;
     // End of variables declaration//GEN-END:variables
 }

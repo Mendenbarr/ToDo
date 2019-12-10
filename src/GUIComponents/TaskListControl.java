@@ -5,14 +5,13 @@
  */
 package GUIComponents;
 
-import javax.swing.DefaultListModel;
 
 /**
  *
  * @author Jake
  */
 public class TaskListControl extends javax.swing.JPanel {
-    DefaultListModel taskModel = new DefaultListModel();
+    TaskListModel taskModel = new TaskListModel();
 
     /**
      * Creates new form TaskListControl
@@ -21,8 +20,11 @@ public class TaskListControl extends javax.swing.JPanel {
         initComponents();
         taskList.setCellRenderer(new TaskListCellRenderer());
         taskList.setModel(taskModel);
-        taskModel.addElement(new Task("Task 1"));
-        taskModel.addElement(new Task("Task 2"));
+    }
+    
+    public TaskListControl(TaskListModel model){
+        this();
+        taskList.setModel(model);
     }
 
     /**
@@ -167,7 +169,7 @@ public class TaskListControl extends javax.swing.JPanel {
         // If nothing is selected, but tasks exist, do nothing
         if (taskList.getSelectedIndex() == -1) return;
         // If there is at least one task selected, edit the first selected tasks
-        taskModel.setElementAt(name, taskList.getSelectedIndex());
+        taskModel.setElementAt(new Task(name), taskList.getSelectedIndex());
         
     }
     
@@ -181,6 +183,11 @@ public class TaskListControl extends javax.swing.JPanel {
             Task t = (Task)taskModel.getElementAt(i);
             t.checkBox(!t.boxChecked());
         }
+        taskList.updateUI();
+    }
+    
+    public TaskListModel getModel(){
+        return taskModel;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -6,6 +6,7 @@
 package GUIComponents;
 // Icon taken from https://www.flaticon.com/packs/essential-collection/6
 
+import java.io.Serializable;
 import javax.swing.JCheckBox;
 
 
@@ -14,14 +15,14 @@ import javax.swing.JCheckBox;
  *
  * @author 01048750
  */
-public class Task extends javax.swing.JPanel {
+public class Task extends javax.swing.JPanel implements Serializable {
 
     /**
      * Creates new form Task
      */
     public Task() {
         initComponents();
-        btnClose.setImage("Images\\close.png");
+        //btnClose.setImage("Images\\close.png");
     }
     
     public Task(String name){
@@ -40,7 +41,6 @@ public class Task extends javax.swing.JPanel {
 
         taskName = new javax.swing.JLabel();
         checkBoxDone = new javax.swing.JCheckBox();
-        btnClose = new GUIComponents.JButtonIcon();
 
         taskName.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         taskName.setText("Task 1");
@@ -53,13 +53,6 @@ public class Task extends javax.swing.JPanel {
             }
         });
 
-        btnClose.setFocusPainted(false);
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -67,20 +60,17 @@ public class Task extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(taskName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
                 .addComponent(checkBoxDone)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(taskName)
-                        .addComponent(checkBoxDone))
-                    .addComponent(btnClose, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(taskName)
+                    .addComponent(checkBoxDone))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -89,13 +79,8 @@ public class Task extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_checkBoxDoneActionPerformed
 
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        System.out.println("Button Pressed");
-    }//GEN-LAST:event_btnCloseActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private GUIComponents.JButtonIcon btnClose;
     private javax.swing.JCheckBox checkBoxDone;
     private javax.swing.JLabel taskName;
     // End of variables declaration//GEN-END:variables
@@ -114,7 +99,7 @@ public class Task extends javax.swing.JPanel {
     
     @Override
     public String toString(){
-        return taskName.getText();
+        return boxChecked() + taskName.getText();
     }
 
 

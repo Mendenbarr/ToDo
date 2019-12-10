@@ -20,8 +20,11 @@ public class TaskListCellRenderer extends Task implements ListCellRenderer<Objec
         setOpaque(true);
     }
 
+    @Override
     public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
         Task t = (Task)value;
+        
+       
         //setNameText(value.toString());
         
 
